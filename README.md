@@ -11,6 +11,9 @@
 - myjavaapp-container is container name
 - myjavapp is Image 
 
+## Go to container terminal
+```exec myjavaapp-container```
+
 ## To Remove the container after exit
 ``` docker run --rm -it dockerdemo-openjdk```
 ## To view logs by containername
@@ -21,6 +24,12 @@
 
 Verify the deployment by navigating to your server address in
 your preferred browser.
+
+## Create Network
+``` docker network create app-network ```
+
+## list networks
+``` docker network ls ```
 
 ```sh
 127.0.0.1:8000
