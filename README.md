@@ -35,6 +35,45 @@ your preferred browser.
 127.0.0.1:8000
 ```
 
+## MySQL with Docker
+
+```
+docker run --name mysql57 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=abcd -d mysql/mysql-server
+```
+
+```
+docker exec -it mysql57 bash
+```
+
+```
+docker exec -it mysql57 bash
+```
+
+```
+create user 'docker_mysql' identified by 'docker_mysql'
+```
+
+```
+grant all on *.* to 'docker_mysql'@'%' identified by 'my-secret-pw';
+```
+
+```
+flush privileges;
+```
+
+```
+CREATE DATABASE docker_mysql_db CHARACTER SET utf8 COLLATE utf8_general_ci;
+```
+
+```
+docker run --name mysql57 -p 3306:3306 \
+-e MYSQL_ROOT_PASSWORD=1234 \
+-e MYSQL_USER=demo_java \
+-e MYSQL_PASSWORD=1234 \
+-e MYSQL_DATABASE=hello_java \
+-d mysql/mysql-server:5.7
+```
+
 - Table Example
 
 | Plugin | README |
