@@ -66,13 +66,33 @@ CREATE DATABASE docker_mysql_db CHARACTER SET utf8 COLLATE utf8_general_ci;
 ```
 
 ```
-docker run --name mysql57 -p 3306:3306 \
--e MYSQL_ROOT_PASSWORD=1234 \
--e MYSQL_USER=demo_java \
--e MYSQL_PASSWORD=1234 \
--e MYSQL_DATABASE=hello_java \
+docker run --name mysql -p 3306:3306 \
+-e MYSQL_ROOT_PASSWORD=abcd \
+-e MYSQL_USER=docker_mysql \
+-e MYSQL_PASSWORD=docker_mysql \
+-e MYSQL_DATABASE=docker_mysql_db \
 -d mysql/mysql-server:5.7
 ```
+
+## Create a dedicated network to connect javaapp with mysql
+
+``` docker network create app-network ```
+``` docker network ls ```
+``` docker network connect app-network app-db
+
+-- In a single command we can specify network as well
+```
+docker run --name app -d -p 8080:8080 --network=app-network  my-web-app
+```
+-- app-db is a container name for mysql
+
+- modify application code to use container name in database url
+``` <propery name="javax.persistence.jdbc.url" value="jdbc:mysql://app-db/myDB" /> ```
+- Build the java application and Image
+``` docker build -t my-webapp . ```
+``` docker run --name app -d -p 8080:8080 --network=app-network my-web-app ```
+
+-- 
 
 - Table Example
 
