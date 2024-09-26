@@ -12,7 +12,7 @@
 - myjavapp is Image 
 
 ## Go to container terminal
-```exec myjavaapp-container```
+```docker exec -it myjavaapp-container sh```
 
 ## To Remove the container after exit
 ``` docker run --rm -it dockerdemo-openjdk```
