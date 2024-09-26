@@ -19,11 +19,7 @@
 ## To view logs by containername
 ```docker logs myjavaapp-container  ```
 
-## README Document creation Examples
-> Note: `--capt-add=SYS-ADMIN` is required for PDF rendering.
 
-Verify the deployment by navigating to your server address in
-your preferred browser.
 
 ## Create Network
 ``` docker network create app-network ```
