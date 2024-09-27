@@ -62,6 +62,7 @@ docker run --name mysql -p 3306:3306 \
 ## Create a dedicated network to connect javaapp and mysql
 
 - create network
+  
 ```docker network create app-network ```
 
 ```docker network ls ```
@@ -73,11 +74,14 @@ docker run --name mysql -p 3306:3306 \
 
 
 - modify application code to use container name in database url
+
 ``` <propery name="javax.persistence.jdbc.url" value="jdbc:mysql://app-db/myDB" /> ```
 
 - Build the java application and Image
+  
 ``` docker build -t my-webapp . ```
 ```docker run --name app -d -p 8080:8080 --network=app-network  my-web-app```
+
 (In a single command we can specify network as well, app-db is a container name for mysql)
 
 -- 
