@@ -68,6 +68,9 @@ docker run --name mysql -p 3306:3306 \
 ```docker network ls ```
 
 ### connect app-db container to app-network
+
+```docker run --name app-db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql:latest```
+
 ``` docker network connect app-network app-db```
 
 
