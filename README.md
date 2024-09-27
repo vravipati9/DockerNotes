@@ -20,17 +20,6 @@
 ```docker logs myjavaapp-container  ```
 
 
-
-## Create Network
-``` docker network create app-network ```
-
-## list networks
-``` docker network ls ```
-
-```sh
-127.0.0.1:8000
-```
-
 ## MySQL with Docker
 
 ```
@@ -70,30 +59,26 @@ docker run --name mysql -p 3306:3306 \
 -d mysql/mysql-server:5.7
 ```
 
-## Create a dedicated network to connect javaapp with mysql
+## Create a dedicated network to connect javaapp and mysql
 
 - create network
 ```docker network create app-network ```
 
 ```docker network ls ```
 
+### connect app-db container to app-network
 ``` docker network connect app-network app-db```
 
-## connect app-db container to app-network
 
-```docker build -t my-web-app .```
 
--- In a single command we can specify network as well
-```docker run --name app -d -p 8080:8080 --network=app-network  my-web-app```
-app-db is a container name for mysql
 
 - modify application code to use container name in database url
-  
 ``` <propery name="javax.persistence.jdbc.url" value="jdbc:mysql://app-db/myDB" /> ```
+
 - Build the java application and Image
 ``` docker build -t my-webapp . ```
-
-``` docker run --name app -d -p 8080:8080 --network=app-network my-web-app ```
+```docker run --name app -d -p 8080:8080 --network=app-network  my-web-app```
+(In a single command we can specify network as well, app-db is a container name for mysql)
 
 -- 
 
