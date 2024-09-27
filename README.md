@@ -31,10 +31,6 @@ docker exec -it mysql57 bash
 ```
 
 ```
-docker exec -it mysql57 bash
-```
-
-```
 create user 'docker_mysql' identified by 'docker_mysql'
 ```
 
@@ -49,6 +45,21 @@ flush privileges;
 ```
 CREATE DATABASE docker_mysql_db CHARACTER SET utf8 COLLATE utf8_general_ci;
 ```
+
+-- If we have already user id, password and database passed through environmental variables while running docker run,
+
+```
+docker exec -it mysql57 bash
+```
+
+```
+mysql -uroot -p
+```
+
+```
+connect myDB
+```
+
 
 ```
 docker run --name mysql -p 3306:3306 \
