@@ -93,8 +93,8 @@ docker run --name mysql -p 3306:3306 \
 
 - Build the java application and Image
   
-``` docker build -t my-webapp . ```
-```docker run --name app -d -p 8080:8080 --network=app-network  my-web-app```
+``` docker build -t myjavaapp . ```
+```docker run --name myjavaapp-container -d -p 8080:8080 --network=app-network  myjavaapp```
 
 (In a single command we can specify network as well, app-db is a container name for mysql)
 
